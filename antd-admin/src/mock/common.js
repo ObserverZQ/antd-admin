@@ -28,13 +28,13 @@ const NOTFOUND = {
 
 let postId = 0
 const posts = Mock.mock({
-  'data|100': [
+  'data|200': [
     {
       id () {
         postId += 1
         return postId + 10000
       },
-      'status|1-2': 1,
+      'status|1-4': 1,
       title: '@title',
       author: '@last',
       categories: '@word',

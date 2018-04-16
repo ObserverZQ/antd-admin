@@ -10,14 +10,16 @@ import List from './List'
 const { TabPane } = Tabs
 
 const EnumPostStatus = {
-  UNPUBLISH: 1,
-  PUBLISHED: 2,
+  FINAL: 1,
+  MACHINE: 2,
+  HUMAN: 3,
+  EXPERT: 4,
 }
-
 
 const Index = ({
   post, dispatch, loading, location,
 }) => {
+  let activeKey = String(EnumPostStatus.FINAL)
   const { list, pagination } = post
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
@@ -39,6 +41,7 @@ const Index = ({
   }
 
   const handleTabClick = (key) => {
+    activeKey = key
     dispatch(routerRedux.push({
       pathname,
       search: queryString.stringify({
@@ -49,17 +52,17 @@ const Index = ({
 
 
   return (<Page inner>
-    <Tabs activeKey={query.status === String(EnumPostStatus.UNPUBLISH) ? String(EnumPostStatus.UNPUBLISH) : String(EnumPostStatus.PUBLISHED)} onTabClick={handleTabClick}>
-      <TabPane tab="最终鉴定结果" key={String(EnumPostStatus.PUBLISHED)}>
+    <Tabs defaultActiveKey={String(EnumPostStatus.FINAL)} onTabClick={handleTabClick}>
+      <TabPane tab="最终鉴定结果" key={String(EnumPostStatus.FINAL)}>
         <List {...listProps} />
       </TabPane>
-      <TabPane tab="机器鉴定" key={String(EnumPostStatus.UNPUBLISH)}>
+      <TabPane tab="机器鉴定" key={String(EnumPostStatus.MACHINE)}>
         <List {...listProps} />
       </TabPane>
-      <TabPane tab="人工鉴定" key={String(EnumPostStatus.UNPUBLISH)}>
+      <TabPane tab="人工鉴定" key={String(EnumPostStatus.HUMAN)}>
         <List {...listProps} />
       </TabPane>
-      <TabPane tab="专家鉴定" key={String(EnumPostStatus.UNPUBLISH)}>
+      <TabPane tab="专家鉴定" key={String(EnumPostStatus.EXPERT)}>
         <List {...listProps} />
       </TabPane>
 
