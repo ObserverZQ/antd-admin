@@ -27,6 +27,14 @@ const Routers = function ({ history, app }) {
       models: () => [import('./models/user/detail')],
       component: () => import('./routes/user/detail/'),
     }, {
+      path: '/userBlack',
+      models: () => [import('./models/userBlack')],
+      component: () => import('./routes/userBlack/'),
+    }, {
+      path: '/userBlack/:id',
+      models: () => [import('./models/userBlack/detail')],
+      component: () => import('./routes/userBlack/detail/'),
+    }, {
       path: '/login',
       models: () => [import('./models/login')],
       component: () => import('./routes/login/'),

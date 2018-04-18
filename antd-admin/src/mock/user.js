@@ -5,7 +5,7 @@ const config = require('../utils/config')
 const { apiPrefix } = config
 
 let usersListData = Mock.mock({
-  'data|80-100': [
+  'data|10-20': [
     {
       id: '@id',
       name: '@name',

@@ -28,7 +28,7 @@ let database = [
     mpid: '2',
     name: '黑名单',
     // icon: 'user',
-    route: '/user',
+    route: '/userBlack',
   },
   // {
   //   id: '2',
@@ -40,7 +40,7 @@ let database = [
   {
     id: '7',
     bpid: '1',
-    name: 'Posts',
+    name: '鉴定结果',
     icon: 'shopping-cart',
     route: '/post',
   },
