@@ -10,7 +10,7 @@ const { query } = usersService
 const { prefix } = config
 
 export default modelExtend(pageModel, {
-  namespace: 'user',
+  namespace: 'userBlack',
 
   state: {
     currentItem: {},
@@ -24,6 +24,7 @@ export default modelExtend(pageModel, {
     setup ({ dispatch, history }) {
       history.listen((location) => {
         if (location.pathname === '/userBlack') {
+          console.log(location)
           const payload = queryString.parse(location.search) || {
             page: 1,
             pageSize: 10,
