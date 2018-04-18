@@ -11,10 +11,32 @@ let database = [
   {
     id: '2',
     bpid: '1',
-    name: 'Users',
+    name: '收录媒体',
     icon: 'user',
+  },
+  {
+    id: '21',
+    bpid: '2',
+    mpid: '2',
+    name: '白名单',
+    // icon: 'user',
     route: '/user',
   },
+  {
+    id: '22',
+    bpid: '2',
+    mpid: '2',
+    name: '黑名单',
+    // icon: 'user',
+    route: '/user',
+  },
+  // {
+  //   id: '2',
+  //   bpid: '1',
+  //   name: 'Users',
+  //   icon: 'user',
+  //   route: '/user',
+  // },
   {
     id: '7',
     bpid: '1',

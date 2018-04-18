@@ -19,7 +19,6 @@ const EnumPostStatus = {
 const Index = ({
   post, dispatch, loading, location,
 }) => {
-  let activeKey = String(EnumPostStatus.FINAL)
   const { list, pagination } = post
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
@@ -41,7 +40,6 @@ const Index = ({
   }
 
   const handleTabClick = (key) => {
-    activeKey = key
     dispatch(routerRedux.push({
       pathname,
       search: queryString.stringify({
