@@ -130,7 +130,7 @@ let database = [
     id: '52',
     bpid: '5',
     mpid: '5',
-    name: 'highCharts',
+    name: '系统鉴定正确率',
     icon: 'bar-chart',
     route: '/chart/highCharts',
   },
