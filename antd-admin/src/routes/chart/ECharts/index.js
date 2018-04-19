@@ -85,7 +85,7 @@ class Chart extends React.Component {
   constructor () {
     super()
     this.state = {
-      type: '',
+      type: 'simple',
     }
     this.handleRadioGroupChange = this.handleRadioGroupChange.bind(this)
   }
@@ -96,7 +96,7 @@ class Chart extends React.Component {
   }
   render () {
     return (<Page inner id="EChartsMain">
-      <RadioGroup options={chartList} defaultValue="dynamic" onChange={this.handleRadioGroupChange} />
+      <RadioGroup options={chartList} defaultValue="simple" onChange={this.handleRadioGroupChange} />
       <div className={styles.chart}>
         <EchartsComponent type={this.state.type} />
       </div>

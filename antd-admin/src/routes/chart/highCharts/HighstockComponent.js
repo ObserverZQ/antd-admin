@@ -76,7 +76,10 @@ const data = [
 
 const config = {
   rangeSelector: {
-    selected: 0,
+    selected: 5,
+  },
+  chart: {
+    height: 600,
   },
   title: {
     text: '系统整体鉴定正确率',

@@ -8,15 +8,15 @@ const RadioGroup = Radio.Group
 
 const chartList = [
   {
-    label: 'Highstock',
+    label: '整体',
     value: 'Highstock',
   },
+  // {
+  //   label: 'Highmaps',
+  //   value: 'Highmaps',
+  // },
   {
-    label: 'Highmaps',
-    value: 'Highmaps',
-  },
-  {
-    label: 'HighMore',
+    label: '分类',
     value: 'HighMore',
   },
 ]

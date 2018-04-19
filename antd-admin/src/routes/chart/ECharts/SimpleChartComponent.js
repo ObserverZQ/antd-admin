@@ -11,7 +11,7 @@ const SimpleChartComponent = () => {
       trigger: 'axis',
     },
     legend: {
-      data: ['邮件营销', '联盟广告', '视频广告'],
+      data: ['娱乐', '体育', '国际'],
     },
     toolbox: {
       feature: {
@@ -38,25 +38,25 @@ const SimpleChartComponent = () => {
     ],
     series: [
       {
-        name: '邮件营销',
+        name: '娱乐',
         type: 'line',
         stack: '总量',
         areaStyle: { normal: {} },
-        data: [120, 132, 101, 134, 90, 230, 210],
+        data: [60, 62, 62.5, 64, 63, 63.7, 65],
       },
       {
-        name: '联盟广告',
+        name: '体育',
         type: 'line',
         stack: '总量',
         areaStyle: { normal: {} },
-        data: [220, 182, 191, 234, 290, 330, 310],
+        data: [66, 72, 71, 74, 79, 83, 81],
       },
       {
-        name: '视频广告',
+        name: '国际',
         type: 'line',
         stack: '总量',
         areaStyle: { normal: {} },
-        data: [150, 232, 201, 154, 190, 330, 410],
+        data: [73, 72, 80, 84, 90, 83, 91],
       },
     ],
   }
@@ -70,7 +70,7 @@ const SimpleChartComponent = () => {
         <label> render a Simple echart With <strong>option and height</strong>: </label>
         <ReactEcharts
           option={option}
-          style={{ height: '350px', width: '100%' }}
+          style={{ height: '450px', width: '100%' }}
           className="react_for_echarts"
           theme="macarons"
         />

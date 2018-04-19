@@ -122,7 +122,7 @@ let database = [
     id: '51',
     bpid: '5',
     mpid: '5',
-    name: 'ECharts',
+    name: 'Echarts',
     icon: 'line-chart',
     route: '/chart/ECharts',
   },
