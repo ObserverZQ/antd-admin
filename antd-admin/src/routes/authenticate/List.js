@@ -37,20 +37,16 @@ const List = ({
       className: styles.avatar,
       render: text => <img alt="avatar" width={24} src={text} />,
     }, {
-      title: '名称',
+      title: '标题',
       dataIndex: 'name',
       key: 'name',
       render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
     }, {
-      title: '网址',
-      dataIndex: 'email',
-      key: 'email',
+      title: '来源',
+      dataIndex: 'source',
+      key: 'source',
     }, {
-      title: '简介',
-      dataIndex: 'address',
-      key: 'address',
-    }, {
-      title: '创立时间',
+      title: '发布时间',
       dataIndex: 'createTime',
       key: 'createTime',
     }, {
