@@ -1,11 +1,11 @@
-const qs = require('qs')
+// const qs = require('qs')
 const Mock = require('mockjs')
 const config = require('../utils/config')
 
 const { apiPrefix } = config
 
-let usersListData = Mock.mock({
-  'data|10-20': [
+let authenticateListData = Mock.mock({
+  'data|11-20': [
     {
       id: '@id',
       name: '@ctitle(3,5)',
@@ -24,45 +24,7 @@ let usersListData = Mock.mock({
 })
 
 
-let database = usersListData.data
-
-const EnumRoleType = {
-  ADMIN: 'admin',
-  DEFAULT: 'guest',
-  DEVELOPER: 'developer',
-}
-
-const userPermission = {
-  DEFAULT: {
-    visit: ['1', '2', '21', '7', '5', '51', '52', '53', '8'],
-    role: EnumRoleType.DEFAULT,
-  },
-  ADMIN: {
-    role: EnumRoleType.ADMIN,
-  },
-  DEVELOPER: {
-    role: EnumRoleType.DEVELOPER,
-  },
-}
-
-const adminUsers = [
-  {
-    id: 0,
-    username: 'admin',
-    password: 'admin',
-    permissions: userPermission.ADMIN,
-  }, {
-    id: 1,
-    username: 'guest',
-    password: 'guest',
-    permissions: userPermission.DEFAULT,
-  }, {
-    id: 2,
-    username: '吴彦祖',
-    password: '123456',
-    permissions: userPermission.DEVELOPER,
-  },
-]
+let database1 = authenticateListData.data
 
 const queryArray = (array, key, keyAlias = 'key') => {
   if (!(array instanceof Array)) {
@@ -90,60 +52,13 @@ const NOTFOUND = {
 
 module.exports = {
 
-  [`POST ${apiPrefix}/user/login`] (req, res) {
-    const { username, password } = req.body
-    const user = adminUsers.filter(item => item.username === username)
-
-    if (user.length > 0 && user[0].password === password) {
-      const now = new Date()
-      now.setDate(now.getDate() + 1)
-      res.cookie('token', JSON.stringify({ id: user[0].id, deadline: now.getTime() }), {
-        maxAge: 900000,
-        httpOnly: true,
-      })
-      res.json({ success: true, message: 'Ok' })
-    } else {
-      res.status(400).end()
-    }
-  },
-
-  [`GET ${apiPrefix}/user/logout`] (req, res) {
-    res.clearCookie('token')
-    res.status(200).end()
-  },
-
-  [`GET ${apiPrefix}/user`] (req, res) {
-    const cookie = req.headers.cookie || ''
-    const cookies = qs.parse(cookie.replace(/\s/g, ''), { delimiter: ';' })
-    const response = {}
-    const user = {}
-    if (!cookies.token) {
-      res.status(200).send({ message: 'Not Login' })
-      return
-    }
-    const token = JSON.parse(cookies.token)
-    if (token) {
-      response.success = token.deadline > new Date().getTime()
-    }
-    if (response.success) {
-      const userItem = adminUsers.filter(_ => _.id === token.id)
-      if (userItem.length > 0) {
-        user.permissions = userItem[0].permissions
-        user.username = userItem[0].username
-        user.id = userItem[0].id
-      }
-    }
-    response.user = user
-    res.json(response)
-  },
-
-  [`GET ${apiPrefix}/users`] (req, res) {
+  [`GET ${apiPrefix}/authenticateList`] (req, res) {
     const { query } = req
     let { pageSize, page, ...other } = query
     pageSize = pageSize || 10
     page = page || 1
 
-    let newData = database
+    let newData = database1
     for (let key in other) {
       if ({}.hasOwnProperty.call(other, key)) {
         newData = newData.filter((item) => {
@@ -173,27 +88,27 @@ module.exports = {
     })
   },
 
-  [`DELETE ${apiPrefix}/users`] (req, res) {
+  [`DELETE ${apiPrefix}/authenticateList`] (req, res) {
     const { ids } = req.body
-    database = database.filter(item => !ids.some(_ => _ === item.id))
+    database1 = database1.filter(item => !ids.some(_ => _ === item.id))
     res.status(204).end()
   },
 
 
-  [`POST ${apiPrefix}/user`] (req, res) {
+  [`POST ${apiPrefix}/authenticate`] (req, res) {
     const newData = req.body
     newData.createTime = Mock.mock('@now')
     newData.avatar = newData.avatar || Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', newData.nickName.substr(0, 1))
     newData.id = Mock.mock('@id')
 
-    database.unshift(newData)
+    database1.unshift(newData)
 
     res.status(200).end()
   },
 
-  [`GET ${apiPrefix}/user/:id`] (req, res) {
+  [`GET ${apiPrefix}/authenticate/:id`] (req, res) {
     const { id } = req.params
-    const data = queryArray(database, id, 'id')
+    const data = queryArray(database1, id, 'id')
     if (data) {
       res.status(200).json(data)
     } else {
@@ -201,23 +116,23 @@ module.exports = {
     }
   },
 
-  [`DELETE ${apiPrefix}/user/:id`] (req, res) {
+  [`DELETE ${apiPrefix}/authenticate/:id`] (req, res) {
     const { id } = req.params
-    const data = queryArray(database, id, 'id')
+    const data = queryArray(database1, id, 'id')
     if (data) {
-      database = database.filter(item => item.id !== id)
+      database1 = database1.filter(item => item.id !== id)
       res.status(204).end()
     } else {
       res.status(404).json(NOTFOUND)
     }
   },
 
-  [`PATCH ${apiPrefix}/user/:id`] (req, res) {
+  [`PATCH ${apiPrefix}/authenticate/:id`] (req, res) {
     const { id } = req.params
     const editItem = req.body
     let isExist = false
 
-    database = database.map((item) => {
+    database1 = database1.map((item) => {
       if (item.id === id) {
         isExist = true
         return Object.assign({}, item, editItem)

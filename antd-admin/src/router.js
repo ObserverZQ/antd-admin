@@ -72,6 +72,14 @@ const Routers = function ({ history, app }) {
       path: '/post',
       models: () => [import('./models/post')],
       component: () => import('./routes/post/'),
+    }, {
+      path: '/authenticate',
+      models: () => [import('./models/authenticate')],
+      component: () => import('./routes/authenticate/'),
+    }, {
+      path: '/authenticate/:id',
+      models: () => [import('./models/authenticate/detail')],
+      component: () => import('./routes/authenticate/detail/'),
     },
   ]
 

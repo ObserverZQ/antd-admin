@@ -4,7 +4,7 @@ const APIV2 = '/api/v2'
 module.exports = {
   name: 'AntD Admin',
   prefix: 'antdAdmin',
-  footerText: 'Ant Design Admin  © 2017 zuiidea',
+  footerText: 'Ant Design Admin  © 2018 Unintelligibility',
   logo: '/logo.svg',
   iconFontCSS: '/iconfont.css',
   iconFontJS: '/iconfont.js',
@@ -27,5 +27,7 @@ module.exports = {
     weather: `${APIV1}/weather`,
     v1test: `${APIV1}/test`,
     v2test: `${APIV2}/test`,
+    authenticate: `${APIV1}/authenticate/:id`,
+    authenticateList: `${APIV1}/authenticateList`,
   },
 }

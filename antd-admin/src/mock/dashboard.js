@@ -104,18 +104,18 @@ const Dashboard = Mock.mock({
     {
       icon: 'pay-circle-o',
       color: color.green,
-      title: 'Online Review',
+      title: '训练集新闻数量',
       number: 2781,
     }, {
       icon: 'team',
       color: color.blue,
-      title: 'New Customers',
-      number: 3241,
+      title: '鉴定人员',
+      number: 41,
     }, {
       icon: 'message',
       color: color.purple,
-      title: 'Active Projects',
-      number: 253,
+      title: '已访问服务',
+      number: 25,
     }, {
       icon: 'shopping-cart',
       color: color.red,

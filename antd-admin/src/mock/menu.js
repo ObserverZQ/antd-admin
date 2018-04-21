@@ -176,6 +176,13 @@ let database = [
     name: 'Test Navigation22',
     route: '/navigation/navigation2/navigation2',
   },
+  {
+    id: '8',
+    bpid: '1',
+    name: '鉴定新闻',
+    icon: 'console',
+    route: '/authenticate',
+  },
 ]
 
 module.exports = {
