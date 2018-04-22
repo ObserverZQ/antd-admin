@@ -12,22 +12,17 @@ export default {
   subscriptions: {
     setup ({ dispatch, history }) {
       history.listen(({ pathname }) => {
-        const match = pathToRegexp('/authenticate/:id')
-          .exec(pathname)
+        const match = pathToRegexp('/authenticate/:id').exec(pathname)
+        console.log(match)
         if (match) {
-          dispatch({
-            type: 'query',
-            payload: { id: match[1] },
-          })
+          dispatch({ type: 'query', payload: { id: match[1] } })
         }
       })
     },
   },
 
   effects: {
-    * query ({
-      payload,
-    }, { call, put }) {
+    * query ({ payload }, { call, put }) {
       const data = yield call(query, payload)
       const {
         success, message, status, ...other

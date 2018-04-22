@@ -25,4 +25,4 @@ Detail.propTypes = {
   authenticateDetail: PropTypes.object,
 }
 
-export default connect(({ authenticateDetail, loading }) => ({ authenticateDetail, loading: loading.models.userDetail }))(Detail)
+export default connect(({ authenticateDetail, loading }) => ({ authenticateDetail, loading: loading.models.authenticateDetail }))(Detail)

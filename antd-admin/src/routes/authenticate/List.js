@@ -40,7 +40,7 @@ const List = ({
       title: '标题',
       dataIndex: 'name',
       key: 'name',
-      render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
+      render: (text, record) => <Link to={`authenticate/${record.id}`}>{text}</Link>,
     }, {
       title: '来源',
       dataIndex: 'source',
