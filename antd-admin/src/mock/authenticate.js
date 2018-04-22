@@ -8,17 +8,10 @@ let authenticateListData = Mock.mock({
   'data|11-20': [
     {
       id: '@id',
-      name: '@ctitle(6,18)',
-      nickName: '@last',
-      phone: /^1[34578]\d{9}$/,
-      'age|11-99': 1,
-      address: '@cparagraph(1)',
-      isMale: '@boolean',
+      title: '@ctitle(10,20)',
       source: '@ctitle(3,8)',
       createTime: '@datetime',
-      avatar () {
-        return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.nickName.substr(0, 1))
-      },
+      content: '@paragraph(4)',
     },
   ],
 })
