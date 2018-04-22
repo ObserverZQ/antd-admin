@@ -197,6 +197,20 @@ let database = [
     name: 'Authenticate Detail',
     route: '/authenticate/:id',
   },
+  {
+    id: '9',
+    bpid: '1',
+    name: '鉴定历史记录',
+    icon: 'console',
+    route: '/authenticateHistory',
+  },
+  {
+    id: '91',
+    mpid: '-1',
+    bpid: '9',
+    name: 'AuthenticateHistory Detail',
+    route: '/authenticateHistory/:id',
+  },
 ]
 
 module.exports = {
