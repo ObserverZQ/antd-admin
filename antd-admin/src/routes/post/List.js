@@ -11,13 +11,13 @@ const List = ({ ...tableProps }) => {
       width: 64,
       render: text => <img alt="Feture" width={26} src={text} />,
     }, {
-      title: 'Title',
+      title: '标题',
       dataIndex: 'title',
     }, {
-      title: 'Author',
+      title: '来源',
       dataIndex: 'author',
     }, {
-      title: 'Categories',
+      title: '类别',
       dataIndex: 'categories',
     }, {
       title: 'Tags',

@@ -50,7 +50,6 @@ module.exports = {
     let { pageSize, page, ...other } = query
     pageSize = pageSize || 10
     page = page || 1
-    console.log('mock authenticate')
     let newData = database1
     for (let key in other) {
       if ({}.hasOwnProperty.call(other, key)) {
