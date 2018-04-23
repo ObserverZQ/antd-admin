@@ -1,165 +1,69 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
-import { Row, Col, Button, Popconfirm } from 'antd'
-import { Page } from 'components'
+import { Tabs } from 'antd'
+import { routerRedux } from 'dva/router'
 import queryString from 'query-string'
+import { Page } from 'components'
 import List from './List'
-import Filter from './Filter'
-import Modal from './Modal'
 
+const { TabPane } = Tabs
 
-const User = ({
-  location, dispatch, authenticateHistory, loading,
+const EnumAuthenticateHistoryStatus = {
+  RIGHT: 1,
+  WRONG: 2,
+}
+
+const Index = ({
+  authenticateHistory, dispatch, loading, location,
 }) => {
+  const { list, pagination } = authenticateHistory
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
-  const {
-    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys,
-  } = authenticateHistory
 
-  const handleRefresh = (newQuery) => {
+  const listProps = {
+    pagination,
+    dataSource: list,
+    loading: loading.effects['post/query'],
+    onChange (page) {
+      dispatch(routerRedux.push({
+        pathname,
+        search: queryString.stringify({
+          ...query,
+          page: page.current,
+          pageSize: page.pageSize,
+        }),
+      }))
+    },
+  }
+
+  const handleTabClick = (key) => {
     dispatch(routerRedux.push({
       pathname,
       search: queryString.stringify({
-        ...query,
-        ...newQuery,
+        status: key,
       }),
     }))
   }
 
-  const modalProps = {
-    item: modalType === 'create' ? {} : currentItem,
-    visible: modalVisible,
-    maskClosable: false,
-    confirmLoading: loading.effects[`authenticate/${modalType}`],
-    title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
-    wrapClassName: 'vertical-center-modal',
-    onOk (data) {
-      dispatch({
-        type: `authenticateHistory/${modalType}`,
-        payload: data,
-      })
-        .then(() => {
-          handleRefresh()
-        })
-    },
-    onCancel () {
-      dispatch({
-        type: 'authenticateHistory/hideModal',
-      })
-    },
-  }
 
-  const listProps = {
-    dataSource: list,
-    loading: loading.effects['authenticateHistory/query'],
-    pagination,
-    location,
-    isMotion,
-    onChange (page) {
-      handleRefresh({
-        page: page.current,
-        pageSize: page.pageSize,
-      })
-    },
-    onDeleteItem (id) {
-      dispatch({
-        type: 'authenticateHistory/delete',
-        payload: id,
-      })
-        .then(() => {
-          handleRefresh({
-            page: (list.length === 1 && pagination.current > 1) ? pagination.current - 1 : pagination.current,
-          })
-        })
-    },
-    onEditItem (item) {
-      dispatch({
-        type: 'authenticateHistory/showModal',
-        payload: {
-          modalType: 'update',
-          currentItem: item,
-        },
-      })
-    },
-    rowSelection: {
-      selectedRowKeys,
-      onChange: (keys) => {
-        dispatch({
-          type: 'authenticateHistory/updateState',
-          payload: {
-            selectedRowKeys: keys,
-          },
-        })
-      },
-    },
-  }
-
-  const filterProps = {
-    isMotion,
-    filter: {
-      ...query,
-    },
-    onFilterChange (value) {
-      handleRefresh({
-        ...value,
-        page: 1,
-      })
-    },
-    onAdd () {
-      dispatch({
-        type: 'authenticateHistory/showModal',
-        payload: {
-          modalType: 'create',
-        },
-      })
-    },
-    switchIsMotion () {
-      dispatch({ type: 'authenticateHistory/switchIsMotion' })
-    },
-  }
-
-  const handleDeleteItems = () => {
-    dispatch({
-      type: 'authenticateHistory/multiDelete',
-      payload: {
-        ids: selectedRowKeys,
-      },
-    })
-      .then(() => {
-        handleRefresh({
-          page: (list.length === selectedRowKeys.length && pagination.current > 1) ? pagination.current - 1 : pagination.current,
-        })
-      })
-  }
-
-  return (
-    <Page inner>
-      <Filter {...filterProps} />
-      {
-        selectedRowKeys.length > 0 &&
-        <Row style={{ marginBottom: 24, textAlign: 'right', fontSize: 13 }}>
-          <Col>
-            {`Selected ${selectedRowKeys.length} items `}
-            <Popconfirm title="Are you sure delete these items?" placement="left" onConfirm={handleDeleteItems}>
-              <Button type="primary" style={{ marginLeft: 8 }}>Remove</Button>
-            </Popconfirm>
-          </Col>
-        </Row>
-      }
-      <List {...listProps} />
-      {modalVisible && <Modal {...modalProps} />}
-    </Page>
-  )
+  return (<Page inner>
+    <Tabs defaultActiveKey={String(EnumAuthenticateHistoryStatus.RIGHT)} onTabClick={handleTabClick}>
+      <TabPane tab="正确" key={String(EnumAuthenticateHistoryStatus.RIGHT)}>
+        <List {...listProps} />
+      </TabPane>
+      <TabPane tab="错误" key={String(EnumAuthenticateHistoryStatus.WRONG)}>
+        <List {...listProps} />
+      </TabPane>
+    </Tabs>
+  </Page>)
 }
 
-User.propTypes = {
+Index.propTypes = {
   authenticateHistory: PropTypes.object,
+  loading: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
-  loading: PropTypes.object,
 }
 
-export default connect(({ authenticateHistory, loading }) => ({ authenticateHistory, loading }))(User)
+export default connect(({ authenticateHistory, loading }) => ({ authenticateHistory, loading }))(Index)
