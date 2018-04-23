@@ -204,6 +204,13 @@ let database = [
     icon: 'console',
     route: '/authenticateHistory',
   },
+  {
+    id: '10',
+    bpid: '1',
+    name: '参数设置',
+    icon: 'console',
+    route: '/parameterSetting',
+  },
 ]
 
 module.exports = {

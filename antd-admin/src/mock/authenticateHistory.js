@@ -1,5 +1,6 @@
 const Mock = require('mockjs')
 const { config } = require('./common')
+
 const { apiPrefix } = config
 
 let authenticateHistoryId = 0
