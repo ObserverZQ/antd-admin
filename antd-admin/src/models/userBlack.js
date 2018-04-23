@@ -24,6 +24,7 @@ export default modelExtend(pageModel, {
     setup ({ dispatch, history }) {
       history.listen((location) => {
         if (location.pathname === '/userBlack') {
+          console.log('/userBlack: ')
           console.log(location)
           const payload = queryString.parse(location.search) || {
             page: 1,

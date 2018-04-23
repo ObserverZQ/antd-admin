@@ -45,11 +45,18 @@ let database = [
     route: '/post',
   },
   {
-    id: '21',
+    id: '211',
     mpid: '-1',
-    bpid: '2',
+    bpid: '21',
     name: 'User Detail',
     route: '/user/:id',
+  },
+  {
+    id: '221',
+    mpid: '-1',
+    bpid: '22',
+    name: 'UserBlack Detail',
+    route: '/userBlack/:id',
   },
   {
     id: '3',
@@ -182,6 +189,27 @@ let database = [
     name: '鉴定新闻',
     icon: 'console',
     route: '/authenticate',
+  },
+  {
+    id: '81',
+    mpid: '-1',
+    bpid: '8',
+    name: 'Authenticate Detail',
+    route: '/authenticate/:id',
+  },
+  {
+    id: '9',
+    bpid: '1',
+    name: '鉴定历史记录',
+    icon: 'console',
+    route: '/authenticateHistory',
+  },
+  {
+    id: '10',
+    bpid: '1',
+    name: '参数设置',
+    icon: 'console',
+    route: '/parameterSetting',
   },
 ]
 

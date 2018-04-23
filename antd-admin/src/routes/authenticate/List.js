@@ -30,17 +30,10 @@ const List = ({
 
   const columns = [
     {
-      title: '图标',
-      dataIndex: 'avatar',
-      key: 'avatar',
-      width: 64,
-      className: styles.avatar,
-      render: text => <img alt="avatar" width={24} src={text} />,
-    }, {
       title: '标题',
-      dataIndex: 'name',
-      key: 'name',
-      render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
+      dataIndex: 'title',
+      key: 'title',
+      render: (text, record) => <Link to={`authenticate/${record.id}`}>{text}</Link>,
     }, {
       title: '来源',
       dataIndex: 'source',

@@ -81,6 +81,16 @@ const Routers = function ({ history, app }) {
       models: () => [import('./models/authenticate/detail')],
       component: () => import('./routes/authenticate/detail/'),
     },
+    {
+      path: '/authenticateHistory',
+      models: () => [import('./models/authenticateHistory')],
+      component: () => import('./routes/authenticateHistory/'),
+    },
+    {
+      path: '/parameterSetting',
+      // models: () => [import('./models/parameterSetting')],
+      component: () => import('./routes/parameterSetting/'),
+    },
   ]
 
   return (

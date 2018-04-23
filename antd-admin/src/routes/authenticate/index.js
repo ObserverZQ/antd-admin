@@ -33,7 +33,7 @@ const User = ({
     item: modalType === 'create' ? {} : currentItem,
     visible: modalVisible,
     maskClosable: false,
-    confirmLoading: loading.effects[`user/${modalType}`],
+    confirmLoading: loading.effects[`authenticate/${modalType}`],
     title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
