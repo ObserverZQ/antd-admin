@@ -11,13 +11,13 @@ import Modal from './Modal'
 
 
 const User = ({
-  location, dispatch, authenticate, loading,
+  location, dispatch, authenticateHistory, loading,
 }) => {
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
   const {
     list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys,
-  } = authenticate
+  } = authenticateHistory
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -38,7 +38,7 @@ const User = ({
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       dispatch({
-        type: `authenticate/${modalType}`,
+        type: `authenticateHistory/${modalType}`,
         payload: data,
       })
         .then(() => {
@@ -47,14 +47,14 @@ const User = ({
     },
     onCancel () {
       dispatch({
-        type: 'authenticate/hideModal',
+        type: 'authenticateHistory/hideModal',
       })
     },
   }
 
   const listProps = {
     dataSource: list,
-    loading: loading.effects['authenticate/query'],
+    loading: loading.effects['authenticateHistory/query'],
     pagination,
     location,
     isMotion,
@@ -66,7 +66,7 @@ const User = ({
     },
     onDeleteItem (id) {
       dispatch({
-        type: 'authenticate/delete',
+        type: 'authenticateHistory/delete',
         payload: id,
       })
         .then(() => {
@@ -77,7 +77,7 @@ const User = ({
     },
     onEditItem (item) {
       dispatch({
-        type: 'authenticate/showModal',
+        type: 'authenticateHistory/showModal',
         payload: {
           modalType: 'update',
           currentItem: item,
@@ -88,7 +88,7 @@ const User = ({
       selectedRowKeys,
       onChange: (keys) => {
         dispatch({
-          type: 'authenticate/updateState',
+          type: 'authenticateHistory/updateState',
           payload: {
             selectedRowKeys: keys,
           },
@@ -110,20 +110,20 @@ const User = ({
     },
     onAdd () {
       dispatch({
-        type: 'authenticate/showModal',
+        type: 'authenticateHistory/showModal',
         payload: {
           modalType: 'create',
         },
       })
     },
     switchIsMotion () {
-      dispatch({ type: 'authenticate/switchIsMotion' })
+      dispatch({ type: 'authenticateHistory/switchIsMotion' })
     },
   }
 
   const handleDeleteItems = () => {
     dispatch({
-      type: 'authenticate/multiDelete',
+      type: 'authenticateHistory/multiDelete',
       payload: {
         ids: selectedRowKeys,
       },
@@ -156,10 +156,10 @@ const User = ({
 }
 
 User.propTypes = {
-  authenticate: PropTypes.object,
+  authenticateHistory: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
 }
 
-export default connect(({ authenticate, loading }) => ({ authenticate, loading }))(User)
+export default connect(({ authenticateHistory, loading }) => ({ authenticateHistory, loading }))(User)

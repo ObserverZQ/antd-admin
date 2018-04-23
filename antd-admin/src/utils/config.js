@@ -29,5 +29,7 @@ module.exports = {
     v2test: `${APIV2}/test`,
     authenticate: `${APIV1}/authenticate/:id`,
     authenticateList: `${APIV1}/authenticateList`,
+    authenticateHistory: `${APIV1}/authenticateHistory/:id`,
+    authenticateHistoryList: `${APIV1}/authenticateHistoryList`,
   },
 }

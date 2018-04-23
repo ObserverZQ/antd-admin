@@ -26,7 +26,7 @@ const Detail = ({ authenticateDetail }) => {
       <Radio value={2}>标题党</Radio>
       <Radio value={3}>谣言</Radio>
     </RadioGroup>
-    <Link to="/authenticate"><Button>确认</Button></Link>
+    <Link to="/authenticate"><Button type="primary" ghost>确认</Button></Link>
   </div>)
 }
 

@@ -5,7 +5,7 @@ const config = require('../utils/config')
 const { apiPrefix } = config
 
 let authenticateListData = Mock.mock({
-  'data|11-20': [
+  'data|20-30': [
     {
       id: '@id',
       title: '@ctitle(10,20)',
@@ -50,7 +50,7 @@ module.exports = {
     let { pageSize, page, ...other } = query
     pageSize = pageSize || 10
     page = page || 1
-
+    console.log('mock authenticateHistory')
     let newData = database1
     for (let key in other) {
       if ({}.hasOwnProperty.call(other, key)) {
