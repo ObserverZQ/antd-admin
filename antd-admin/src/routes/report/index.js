@@ -1,165 +1,78 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
-import { Row, Col, Button, Popconfirm } from 'antd'
-import { Page } from 'components'
+import { Tabs } from 'antd'
+import { routerRedux } from 'dva/router'
 import queryString from 'query-string'
+import { Page } from 'components'
 import List from './List'
-import Filter from './Filter'
-import Modal from './Modal'
 
+const { TabPane } = Tabs
 
-const User = ({
-  location, dispatch, user, loading,
+const EnumPostStatus = {
+  FINAL: 1,
+  MACHINE: 2,
+  HUMAN: 3,
+  EXPERT: 4,
+}
+
+const Index = ({
+  report, dispatch, loading, location,
 }) => {
+  const { list, pagination } = post
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
-  const {
-    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys,
-  } = user
 
-  const handleRefresh = (newQuery) => {
+  const listProps = {
+    pagination,
+    dataSource: list,
+    loading: loading.effects['post/query'],
+    onChange (page) {
+      dispatch(routerRedux.push({
+        pathname,
+        search: queryString.stringify({
+          ...query,
+          page: page.current,
+          pageSize: page.pageSize,
+        }),
+      }))
+    },
+  }
+
+  const handleTabClick = (key) => {
     dispatch(routerRedux.push({
       pathname,
       search: queryString.stringify({
-        ...query,
-        ...newQuery,
+        status: key,
       }),
     }))
   }
 
-  const modalProps = {
-    item: modalType === 'create' ? {} : currentItem,
-    visible: modalVisible,
-    maskClosable: false,
-    confirmLoading: loading.effects[`user/${modalType}`],
-    title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
-    wrapClassName: 'vertical-center-modal',
-    onOk (data) {
-      dispatch({
-        type: `user/${modalType}`,
-        payload: data,
-      })
-        .then(() => {
-          handleRefresh()
-        })
-    },
-    onCancel () {
-      dispatch({
-        type: 'user/hideModal',
-      })
-    },
-  }
 
-  const listProps = {
-    dataSource: list,
-    loading: loading.effects['user/query'],
-    pagination,
-    location,
-    isMotion,
-    onChange (page) {
-      handleRefresh({
-        page: page.current,
-        pageSize: page.pageSize,
-      })
-    },
-    onDeleteItem (id) {
-      dispatch({
-        type: 'user/delete',
-        payload: id,
-      })
-        .then(() => {
-          handleRefresh({
-            page: (list.length === 1 && pagination.current > 1) ? pagination.current - 1 : pagination.current,
-          })
-        })
-    },
-    onEditItem (item) {
-      dispatch({
-        type: 'user/showModal',
-        payload: {
-          modalType: 'update',
-          currentItem: item,
-        },
-      })
-    },
-    rowSelection: {
-      selectedRowKeys,
-      onChange: (keys) => {
-        dispatch({
-          type: 'user/updateState',
-          payload: {
-            selectedRowKeys: keys,
-          },
-        })
-      },
-    },
-  }
+  return (<Page inner>
+    <Tabs defaultActiveKey={String(EnumPostStatus.FINAL)} onTabClick={handleTabClick}>
+      <TabPane tab="最终鉴定结果" key={String(EnumPostStatus.FINAL)}>
+        <List {...listProps} />
+      </TabPane>
+      <TabPane tab="机器鉴定" key={String(EnumPostStatus.MACHINE)}>
+        <List {...listProps} />
+      </TabPane>
+      <TabPane tab="人工鉴定" key={String(EnumPostStatus.HUMAN)}>
+        <List {...listProps} />
+      </TabPane>
+      <TabPane tab="专家鉴定" key={String(EnumPostStatus.EXPERT)}>
+        <List {...listProps} />
+      </TabPane>
 
-  const filterProps = {
-    isMotion,
-    filter: {
-      ...query,
-    },
-    onFilterChange (value) {
-      handleRefresh({
-        ...value,
-        page: 1,
-      })
-    },
-    onAdd () {
-      dispatch({
-        type: 'user/showModal',
-        payload: {
-          modalType: 'create',
-        },
-      })
-    },
-    switchIsMotion () {
-      dispatch({ type: 'user/switchIsMotion' })
-    },
-  }
-
-  const handleDeleteItems = () => {
-    dispatch({
-      type: 'user/multiDelete',
-      payload: {
-        ids: selectedRowKeys,
-      },
-    })
-      .then(() => {
-        handleRefresh({
-          page: (list.length === selectedRowKeys.length && pagination.current > 1) ? pagination.current - 1 : pagination.current,
-        })
-      })
-  }
-
-  return (
-    <Page inner>
-      <Filter {...filterProps} />
-      {
-        selectedRowKeys.length > 0 &&
-        <Row style={{ marginBottom: 24, textAlign: 'right', fontSize: 13 }}>
-          <Col>
-            {`Selected ${selectedRowKeys.length} items `}
-            <Popconfirm title="Are you sure delete these items?" placement="left" onConfirm={handleDeleteItems}>
-              <Button type="primary" style={{ marginLeft: 8 }}>Remove</Button>
-            </Popconfirm>
-          </Col>
-        </Row>
-      }
-      <List {...listProps} />
-      {modalVisible && <Modal {...modalProps} />}
-    </Page>
-  )
+    </Tabs>
+  </Page>)
 }
 
-User.propTypes = {
-  user: PropTypes.object,
+Index.propTypes = {
+  report: PropTypes.object,
+  loading: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
-  loading: PropTypes.object,
 }
 
-export default connect(({ user, loading }) => ({ user, loading }))(User)
+export default connect(({ report, loading }) => ({ report, loading }))(Index)
