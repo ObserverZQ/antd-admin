@@ -1,43 +1,74 @@
 const Mock = require('mockjs')
-const { config } = require('./common')
+const {config} = require('./common')
 
-const { apiPrefix } = config
+const {apiPrefix} = config
 
 let postId = 0
-const posts = Mock.mock({
-  'data|200': [
-    {
-      id () {
-        postId += 1
-        return postId + 10000
-      },
-      'status|1-4': 1,
-      title: '@title',
-      author: '@last',
-      categories: '@word',
-      tags: '@word',
-      'views|10-200': 1,
-      'comments|10-200': 1,
-      visibility: () => {
-        return Mock.mock('@pick(["Public",'
-          + '"Password protected", '
-          + '"Private"])')
-      },
-      date: '@dateTime',
-      image () {
-        return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.author.substr(0, 1))
-      },
-    },
-  ],
-}).data
-
-let database = posts
+// const posts = Mock.mock({
+//   'data|200': [
+//     {
+//       id: '@id',
+//       title: '@ctitle(10,20)',
+//       source: '@ctitle(3,8)',
+//       createTime: '@datetime',
+//       content: '@paragraph(4)',
+//       reason: () => {
+//         return Mock.mock('@pick(["内容虚假",'
+//           + '"内容低俗", '
+//           + '"内容虚假、内容低俗", '
+//           + '"盗版侵权", '
+//           + '"危险言论", '
+//           + '"危险言论、封建迷信", '
+//           + '"内容虚假、内容低俗、封建迷信", '
+//           + '"封建迷信"])')
+//       },
+//     },
+//   ],
+// }).data
+const reportMock = [
+  {
+    id: '1',
+    title: '渣渣辉的警告',
+    source: 'UC头条',
+    createTime: '2018-3-07 10:03:57',
+    reason: '内容低俗'
+  },
+  {
+    id: '2',
+    title: '教育紧急通知，今年高考大改',
+    source: 'UC头条',
+    createTime: '2018-2-23 13:02:37',
+    reason: '内容虚假'
+  },
+  {
+    id: '3',
+    title: '震惊！南大女学生回家开门竟看见如此一幕',
+    source: '神马新闻',
+    createTime: '2018-4-01 22:33:42',
+    reason: '内容虚假、内容低俗'
+  },
+  {
+    id: '4',
+    title: 'ofo回应收购',
+    source: 'UC头条',
+    createTime: '2018-4-07 07:21:06',
+    reason: '盗版侵权'
+  },
+  {
+    id: '5',
+    title: '跳大神这样玩，能有效祛除疾病',
+    source: '神马新闻',
+    createTime: '2017-12-31 15:53:11',
+    reason: '内容虚假、封建迷信'
+  },
+]
+let database = reportMock
 
 module.exports = {
 
   [`GET ${apiPrefix}/report`] (req, res) {
-    const { query } = req
-    let { pageSize, page, ...other } = query
+    const {query} = req
+    let {pageSize, page, ...other} = query
     pageSize = pageSize || 10
     page = page || 1
 

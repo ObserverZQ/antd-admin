@@ -1,5 +1,5 @@
 import modelExtend from 'dva-model-extend'
-import { query } from 'services/posts'
+import { query } from 'services/report'
 import { pageModel } from 'models/common'
 import queryString from 'query-string'
 

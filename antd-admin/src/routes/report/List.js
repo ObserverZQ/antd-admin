@@ -5,35 +5,21 @@ import styles from './List.less'
 const List = ({ ...tableProps }) => {
   const columns = [
     {
-      title: 'Image',
-      dataIndex: 'image',
-      className: styles.image,
-      width: 64,
-      render: text => <img alt="Feture" width={26} src={text} />,
-    }, {
-      title: 'Title',
+      title: '标题',
       dataIndex: 'title',
+      key: 'title',
+      // render: (text, record) => <Link to={`authenticate/${record.id}`}>{text}</Link>,
     }, {
-      title: 'Author',
-      dataIndex: 'author',
+      title: '来源',
+      dataIndex: 'source',
+      key: 'source',
     }, {
-      title: 'Categories',
-      dataIndex: 'categories',
+      title: '发布时间',
+      dataIndex: 'createTime',
+      key: 'createTime',
     }, {
-      title: 'Tags',
-      dataIndex: 'tags',
-    }, {
-      title: 'Visibility',
-      dataIndex: 'visibility',
-    }, {
-      title: 'Comments',
-      dataIndex: 'comments',
-    }, {
-      title: 'Views',
-      dataIndex: 'views',
-    }, {
-      title: 'Date',
-      dataIndex: 'date',
+      title: '举报原因',
+      dataIndex: 'reason',
     },
   ]
 
