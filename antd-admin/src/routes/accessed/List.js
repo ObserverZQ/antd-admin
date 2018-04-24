@@ -8,7 +8,7 @@ const List = ({ ...tableProps }) => {
       title: '名称',
       dataIndex: 'name',
     }, {
-      title: '调用接口次数',
+      title: '调用接口次数/天',
       dataIndex: 'times',
     },
   ]

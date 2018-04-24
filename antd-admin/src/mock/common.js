@@ -38,18 +38,11 @@ const posts = Mock.mock({
       title: '@title',
       author: '@last',
       categories: '@word',
-      tags: '@word',
       machine: '@word',
       human: '@word',
       expert: '@word',
-      'views|10-200': 1,
-      'comments|10-200': 1,
-      visibility: () => {
-        return Mock.mock('@pick(["Public",'
-          + '"Password protected", '
-          + '"Private"])')
-      },
       date: '@dateTime',
+      finalResult: '@word',
       image () {
         return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.author.substr(0, 1))
       },
