@@ -32,5 +32,6 @@ module.exports = {
     authenticateHistory: `${APIV1}/authenticateHistory/:id`,
     authenticateHistoryList: `${APIV1}/authenticateHistoryList`,
     report: `${APIV1}/report`,
+    accessed: `${APIV1}/accessed`,
   },
 }

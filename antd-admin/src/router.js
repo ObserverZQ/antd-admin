@@ -96,6 +96,11 @@ const Routers = function ({ history, app }) {
       models: () => [import('./models/report')],
       component: () => import('./routes/report/'),
     },
+    {
+      path: '/accessed',
+      models: () => [import('./models/accessed')],
+      component: () => import('./routes/accessed/'),
+    },
   ]
 
   return (

@@ -218,6 +218,13 @@ let database = [
     icon: 'console',
     route: '/report',
   },
+  {
+    id: '12',
+    bpid: '1',
+    name: '已访问服务',
+    icon: 'console',
+    route: '/accessed',
+  },
 ]
 
 module.exports = {
