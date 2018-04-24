@@ -14,6 +14,9 @@ const List = ({ ...tableProps }) => {
       title: '类别',
       dataIndex: 'categories',
     }, {
+      title: '发布日期',
+      dataIndex: 'date',
+    }, {
       title: '机器',
       dataIndex: 'machine',
     }, {
@@ -24,10 +27,7 @@ const List = ({ ...tableProps }) => {
       dataIndex: 'expert',
     }, {
       title: '结果',
-      dataIndex: 'views',
-    }, {
-      title: '发布日期',
-      dataIndex: 'date',
+      dataIndex: 'finalResult',
     },
   ]
 

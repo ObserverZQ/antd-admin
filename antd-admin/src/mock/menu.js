@@ -59,14 +59,14 @@ let database1 = [
   {
     id: '5',
     bpid: '1',
-    icon: 'line-chart',
+    icon: 'link',
     name: '已访问服务',
     route: '/accessed',
   },
   {
     id: '6',
     bpid: '1',
-    icon: 'line-chart',
+    icon: 'bell',
     name: '举报信息',
     route: '/report',
   },

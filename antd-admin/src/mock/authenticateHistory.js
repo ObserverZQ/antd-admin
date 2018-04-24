@@ -30,7 +30,17 @@ const authenticateHistoryList = Mock.mock({
     },
   ],
 }).data
-
+let authenticateHistoryList1 = [
+  {
+    id: 10176,
+    status: 1,
+    title: '张国立夜发自拍 调皮回复网友“问候你妈”',
+    author: '网易娱乐',
+    categories: '娱乐',
+    date: '2018-4-24',
+    authenticateDate: '2018-4-24',
+  },
+]
 module.exports = {
 
   [`GET ${apiPrefix}/authenticateHistory`] (req, res) {
@@ -39,21 +49,25 @@ module.exports = {
     pageSize = pageSize || 10
     page = page || 1
 
-    let newData = authenticateHistoryList
+    let newData = authenticateHistoryList1
     for (let key in other) {
       if ({}.hasOwnProperty.call(other, key)) {
         newData = newData.filter((item) => {
           if ({}.hasOwnProperty.call(item, key)) {
-            return String(item[key]).trim().indexOf(decodeURI(other[key]).trim()) > -1
+            return String(item[key])
+              .trim()
+              .indexOf(decodeURI(other[key])
+                .trim()) > -1
           }
           return true
         })
       }
     }
 
-    res.status(200).json({
-      data: newData.slice((page - 1) * pageSize, page * pageSize),
-      total: newData.length,
-    })
+    res.status(200)
+      .json({
+        data: newData.slice((page - 1) * pageSize, page * pageSize),
+        total: newData.length,
+      })
   },
 }

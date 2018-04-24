@@ -34,8 +34,8 @@ class Parameter extends React.Component {
   constructor () {
     super()
     this.state = {
-      oldRange: [40, 60],
-      range: [40, 60],
+      oldRange: [33, 65],
+      range: [33, 65],
       marks: {
         0: {
           style: {
@@ -43,17 +43,17 @@ class Parameter extends React.Component {
           },
           label: <strong>0%</strong>,
         },
-        40: {
+        33: {
           style: {
             color: '#073763',
           },
-          label: <strong>40%</strong>,
+          label: <strong>33%</strong>,
         },
-        60: {
+        65: {
           style: {
             color: '#073763',
           },
-          label: <strong>60%</strong>,
+          label: <strong>65%</strong>,
         },
         100: {
           style: {

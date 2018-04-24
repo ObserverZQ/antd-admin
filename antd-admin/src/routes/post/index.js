@@ -51,7 +51,10 @@ const Index = ({
 
   return (<Page inner>
     <Tabs defaultActiveKey={String(EnumPostStatus.FINAL)} onTabClick={handleTabClick}>
-      <TabPane tab="最终鉴定结果" key={String(EnumPostStatus.FINAL)}>
+      <TabPane
+        tab="最终鉴定结果（机器鉴定百分比：虚假言论、标题夸大、违法违规、内容低俗）"
+        key={String(EnumPostStatus.FINAL)}
+      >
         <List {...listProps} />
       </TabPane>
     </Tabs>
@@ -65,4 +68,7 @@ Index.propTypes = {
   dispatch: PropTypes.func,
 }
 
-export default connect(({ post, loading }) => ({ post, loading }))(Index)
+export default connect(({ post, loading }) => ({
+  post,
+  loading,
+}))(Index)

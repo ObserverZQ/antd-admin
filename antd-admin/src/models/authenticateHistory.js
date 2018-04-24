@@ -1,5 +1,5 @@
 import modelExtend from 'dva-model-extend'
-import { query } from 'services/posts'
+import { query } from 'services/authenticateHistory'
 import { pageModel } from 'models/common'
 import queryString from 'query-string'
 
@@ -11,10 +11,11 @@ export default modelExtend(pageModel, {
     setup ({ dispatch, history }) {
       history.listen((location) => {
         if (location.pathname === '/authenticateHistory') {
+          console.log(location)
           dispatch({
             type: 'query',
             payload: {
-              status: 2,
+              status: 1,
               ...queryString.parse(location.search),
             },
           })

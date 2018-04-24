@@ -40,7 +40,7 @@ const posts = Mock.mock({
       categories: '@word',
       machine: '@word',
       human: '@word',
-      expert: '@word',
+      expert: '@last',
       date: '@dateTime',
       finalResult: '@word',
       image () {
