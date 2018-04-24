@@ -39,6 +39,9 @@ const posts = Mock.mock({
       author: '@last',
       categories: '@word',
       tags: '@word',
+      machine: '@word',
+      human: '@word',
+      expert: '@word',
       'views|10-200': 1,
       'comments|10-200': 1,
       visibility: () => {

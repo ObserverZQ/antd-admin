@@ -5,12 +5,6 @@ import styles from './List.less'
 const List = ({ ...tableProps }) => {
   const columns = [
     {
-      title: 'Image',
-      dataIndex: 'image',
-      className: styles.image,
-      width: 64,
-      render: text => <img alt="Feture" width={26} src={text} />,
-    }, {
       title: '标题',
       dataIndex: 'title',
     }, {
@@ -20,19 +14,19 @@ const List = ({ ...tableProps }) => {
       title: '类别',
       dataIndex: 'categories',
     }, {
-      title: 'Tags',
-      dataIndex: 'tags',
+      title: '机器',
+      dataIndex: 'machine',
     }, {
-      title: 'Visibility',
-      dataIndex: 'visibility',
+      title: '人工',
+      dataIndex: 'human',
     }, {
-      title: 'Comments',
-      dataIndex: 'comments',
+      title: '专家',
+      dataIndex: 'expert',
     }, {
-      title: 'Views',
+      title: '结果',
       dataIndex: 'views',
     }, {
-      title: 'Date',
+      title: '发布日期',
       dataIndex: 'date',
     },
   ]
