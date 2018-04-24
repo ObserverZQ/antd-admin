@@ -66,6 +66,9 @@ const Routers = function ({ history, app }) {
       path: '/chart/highCharts',
       component: () => import('./routes/chart/highCharts/'),
     }, {
+      path: '/chart/highCharts2',
+      component: () => import('./routes/chart/highCharts2/'),
+    }, {
       path: '/chart/Recharts',
       component: () => import('./routes/chart/Recharts/'),
     }, {
@@ -108,7 +111,7 @@ const Routers = function ({ history, app }) {
       <LocaleProvider locale={enUS}>
         <App>
           <Switch>
-            <Route exact path="/" render={() => (<Redirect to="/dashboard" />)} />
+            <Route exact path="/" render={() => (<Redirect to="/post" />)} />
             {
             routes.map(({ path, ...dynamics }, key) => (
               <Route key={key}

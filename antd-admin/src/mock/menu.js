@@ -1,6 +1,105 @@
 const { config } = require('./common')
 
 const { apiPrefix } = config
+
+let database1 = [
+  {
+    id: '1',
+    icon: 'dashboard',
+    name: '控制台',
+    route: '/post',
+  },
+  {
+    id: '2',
+    icon: 'setting',
+    name: '参数设置',
+    route: '/parameterSetting',
+  },
+  {
+    id: '3',
+    bpid: '1',
+    name: '收录媒体',
+    icon: 'user',
+  },
+  {
+    id: '31',
+    bpid: '3',
+    mpid: '3',
+    name: '白名单',
+    route: '/user',
+  },
+  {
+    id: '32',
+    bpid: '3',
+    mpid: '3',
+    name: '黑名单',
+    route: '/userBlack',
+  },
+  {
+    id: '311',
+    mpid: '-1',
+    bpid: '31',
+    name: '媒体详情',
+    route: '/user/:id',
+  },
+  {
+    id: '321',
+    mpid: '-1',
+    bpid: '32',
+    name: '媒体详情',
+    route: '/userBlack/:id',
+  },
+  {
+    id: '4',
+    bpid: '1',
+    icon: 'line-chart',
+    name: '系统鉴定正确率',
+    route: '/chart/highCharts',
+  },
+  {
+    id: '5',
+    bpid: '1',
+    icon: 'line-chart',
+    name: '已访问服务',
+    route: '/accessed',
+  },
+  {
+    id: '6',
+    bpid: '1',
+    icon: 'line-chart',
+    name: '举报信息',
+    route: '/report',
+  },
+  {
+    id: '7',
+    bpid: '1',
+    name: '鉴定新闻',
+    icon: 'file-text',
+    route: '/authenticate',
+  },
+  {
+    id: '71',
+    mpid: '-1',
+    bpid: '7',
+    name: 'Authenticate Detail',
+    route: '/authenticate/:id',
+  },
+  {
+    id: '8',
+    bpid: '1',
+    name: '鉴定历史记录',
+    icon: 'database',
+    route: '/authenticateHistory',
+  },
+  {
+    id: '9',
+    bpid: '1',
+    name: '分类正确率',
+    icon: 'bar-chart',
+    route: '/chart/highCharts2',
+  },
+]
+
 let database = [
   {
     id: '1',
@@ -230,6 +329,6 @@ let database = [
 module.exports = {
 
   [`GET ${apiPrefix}/menus`] (req, res) {
-    res.status(200).json(database)
+    res.status(200).json(database1)
   },
 }

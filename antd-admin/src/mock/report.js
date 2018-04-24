@@ -30,6 +30,7 @@ const posts = Mock.mock({
     },
   ],
 }).data
+
 let database = posts
 
 module.exports = {

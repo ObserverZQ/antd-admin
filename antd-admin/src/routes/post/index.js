@@ -54,16 +54,6 @@ const Index = ({
       <TabPane tab="最终鉴定结果" key={String(EnumPostStatus.FINAL)}>
         <List {...listProps} />
       </TabPane>
-      <TabPane tab="机器鉴定" key={String(EnumPostStatus.MACHINE)}>
-        <List {...listProps} />
-      </TabPane>
-      <TabPane tab="人工鉴定" key={String(EnumPostStatus.HUMAN)}>
-        <List {...listProps} />
-      </TabPane>
-      <TabPane tab="专家鉴定" key={String(EnumPostStatus.EXPERT)}>
-        <List {...listProps} />
-      </TabPane>
-
     </Tabs>
   </Page>)
 }

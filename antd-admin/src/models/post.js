@@ -14,7 +14,7 @@ export default modelExtend(pageModel, {
           dispatch({
             type: 'query',
             payload: {
-              status: 2,
+              status: 1,
               ...queryString.parse(location.search),
             },
           })
