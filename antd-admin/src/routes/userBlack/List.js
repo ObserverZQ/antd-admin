@@ -30,29 +30,14 @@ const List = ({
 
   const columns = [
     {
-      title: '图标',
-      dataIndex: 'avatar',
-      key: 'avatar',
-      width: 64,
-      className: styles.avatar,
-      render: text => <img alt="avatar" width={24} src={text} />,
-    }, {
       title: '名称',
       dataIndex: 'name',
       key: 'name',
       render: (text, record) => <Link to={`userBlack/${record.id}`}>{text}</Link>,
     }, {
       title: '网址',
-      dataIndex: 'email',
-      key: 'email',
-    }, {
-      title: '简介',
-      dataIndex: 'address',
-      key: 'address',
-    }, {
-      title: '创立时间',
-      dataIndex: 'createTime',
-      key: 'createTime',
+      dataIndex: 'link',
+      key: 'link',
     }, {
       title: '操作',
       key: 'operation',

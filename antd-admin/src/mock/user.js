@@ -4,28 +4,59 @@ const config = require('../utils/config')
 
 const { apiPrefix } = config
 
-let usersListData = Mock.mock({
-  'data|10-20': [
-    {
-      id: '@id',
-      name: '@ctitle(3,5)',
-      nickName: '@last',
-      phone: /^1[34578]\d{9}$/,
-      'age|11-99': 1,
-      address: '@cparagraph(1)',
-      isMale: '@boolean',
-      email: '@url',
-      createTime: '@datetime',
-      avatar () {
-        return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.nickName.substr(0, 1))
-      },
-    },
-  ],
-})
-
-
-let database = usersListData.data
-
+// let usersListData = Mock.mock({
+//   'data|10-20': [
+//     {
+//       id: '@id',
+//       name: '@ctitle(3,5)',
+//       nickName: '@last',
+//       phone: /^1[34578]\d{9}$/,
+//       'age|11-99': 1,
+//       address: '@cparagraph(1)',
+//       isMale: '@boolean',
+//       link: '@url',
+//       createTime: '@datetime',
+//       avatar () {
+//         return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.nickName.substr(0, 1))
+//       },
+//     },
+//   ],
+// })
+//
+//
+// let database = usersListData.data
+let database = [
+  {
+    id: 201,
+    name: '人名日报',
+    link: 'http://www.people.com.cn/',
+  },
+  {
+    id: 202,
+    name: '新华网',
+    link: 'http://www.xinhuanet.com/',
+  },
+  {
+    id: 203,
+    name: '新浪网',
+    link: 'http://www.sina.com.cn/',
+  },
+  {
+    id: 204,
+    name: '南大小百合',
+    link: 'https://baihe.nju.edu.cn/',
+  },
+  {
+    id: 205,
+    name: '果壳网',
+    link: 'https://www.guokr.com/',
+  },
+  {
+    id: 206,
+    name: '凤凰网',
+    link: 'http://www.ifeng.com/',
+  },
+]
 const EnumRoleType = {
   ADMIN: 'admin',
   DEFAULT: 'guest',
@@ -182,8 +213,8 @@ module.exports = {
 
   [`POST ${apiPrefix}/user`] (req, res) {
     const newData = req.body
-    newData.createTime = Mock.mock('@now')
-    newData.avatar = newData.avatar || Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', newData.nickName.substr(0, 1))
+    // newData.createTime = Mock.mock('@now')
+    // newData.avatar = newData.avatar || Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', newData.nickName.substr(0, 1))
     newData.id = Mock.mock('@id')
 
     database.unshift(newData)
