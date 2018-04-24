@@ -34,7 +34,7 @@ let database = posts
 
 module.exports = {
 
-  [`GET ${apiPrefix}/posts`] (req, res) {
+  [`GET ${apiPrefix}/report`] (req, res) {
     const { query } = req
     let { pageSize, page, ...other } = query
     pageSize = pageSize || 10

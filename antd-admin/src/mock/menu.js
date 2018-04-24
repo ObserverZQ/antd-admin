@@ -211,6 +211,13 @@ let database = [
     icon: 'console',
     route: '/parameterSetting',
   },
+  {
+    id: '11',
+    bpid: '1',
+    name: '举报信息',
+    icon: 'console',
+    route: '/report',
+  },
 ]
 
 module.exports = {

@@ -91,6 +91,11 @@ const Routers = function ({ history, app }) {
       // models: () => [import('./models/parameterSetting')],
       component: () => import('./routes/parameterSetting/'),
     },
+    {
+      path: '/report',
+      models: () => [import('./models/report')],
+      component: () => import('./routes/report/'),
+    },
   ]
 
   return (

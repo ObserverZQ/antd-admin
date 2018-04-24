@@ -19,14 +19,14 @@ const EnumPostStatus = {
 const Index = ({
   report, dispatch, loading, location,
 }) => {
-  const { list, pagination } = post
+  const { list, pagination } = report
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
 
   const listProps = {
     pagination,
     dataSource: list,
-    loading: loading.effects['post/query'],
+    loading: loading.effects['report/query'],
     onChange (page) {
       dispatch(routerRedux.push({
         pathname,
