@@ -11,6 +11,13 @@ const Detail = ({ authenticateDetail }) => {
   const content = []
   for (let key in data) {
     if ({}.hasOwnProperty.call(data, key)) {
+      if (key === 'content') {
+        content.push(<div key={key} className={styles.item}>
+          <div>{key}</div>
+          <div dangerouslySetInnerHTML={{ __html: String(data[key]) }} />
+        </div>)
+        continue
+      }
       content.push(<div key={key} className={styles.item}>
         <div>{key}</div>
         <div>{String(data[key])}</div>
