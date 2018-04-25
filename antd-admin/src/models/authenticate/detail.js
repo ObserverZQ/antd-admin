@@ -12,6 +12,7 @@ export default {
   subscriptions: {
     setup ({ dispatch, history }) {
       history.listen(({ pathname }) => {
+        console.log('/authenticate/:id')
         const match = pathToRegexp('/authenticate/:id').exec(pathname)
         console.log(match)
         if (match) {

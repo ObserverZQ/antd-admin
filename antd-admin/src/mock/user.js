@@ -224,7 +224,8 @@ module.exports = {
 
   [`GET ${apiPrefix}/user/:id`] (req, res) {
     const { id } = req.params
-    const data = queryArray(database, id, 'id')
+    const idInt = parseInt(id, 0)
+    const data = queryArray(database, idInt, 'id')
     if (data) {
       res.status(200).json(data)
     } else {

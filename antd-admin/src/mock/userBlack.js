@@ -129,7 +129,8 @@ module.exports = {
 
   [`GET ${apiPrefix}/userBlack/:id`] (req, res) {
     const { id } = req.params
-    const data = queryArray(database1, id, 'id')
+    const idInt = parseInt(id, 0)
+    const data = queryArray(database1, idInt, 'id')
     if (data) {
       res.status(200).json(data)
     } else {
