@@ -81,7 +81,7 @@ let database1 = [
     id: '71',
     mpid: '-1',
     bpid: '7',
-    name: 'Authenticate Detail',
+    name: '新闻详情',
     route: '/authenticate/:id',
   },
   {

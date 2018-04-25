@@ -73,7 +73,7 @@ export default {
         const { list } = yield call(menusService.query)
         const { permissions } = user
         let menu = list
-        if (permissions.role === EnumRoleType.ADMIN || permissions.role === EnumRoleType.DEVELOPER) {
+        if (permissions.role === EnumRoleType.ADMIN) {
           permissions.visit = list.map(item => item.id)
         } else {
           menu = list.filter((item) => {

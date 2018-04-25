@@ -38,28 +38,28 @@ const reportMock = [
     title: '教育紧急通知，今年高考大改',
     source: 'UC头条',
     createTime: '2018-2-23 13:02:37',
-    reason: '内容虚假',
+    reason: '言论虚假',
   },
   {
     id: '3',
     title: '震惊！南大女学生回家开门竟看见如此一幕',
     source: '神马新闻',
     createTime: '2018-4-01 22:33:42',
-    reason: '内容虚假、内容低俗',
+    reason: '虚假言论, 内容低俗',
   },
   {
     id: '4',
     title: 'ofo回应收购',
     source: 'UC头条',
     createTime: '2018-4-07 07:21:06',
-    reason: '盗版侵权',
+    reason: '违法违规',
   },
   {
     id: '5',
     title: '跳大神这样玩，能有效祛除疾病',
     source: '神马新闻',
     createTime: '2017-12-31 15:53:11',
-    reason: '内容虚假、封建迷信',
+    reason: '言论虚假',
   },
 ]
 let database = reportMock

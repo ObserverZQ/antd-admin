@@ -1,11 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
-import { Button, Radio } from 'antd'
+import { Button, Select } from 'antd'
 import { Link } from 'react-router-dom'
 import styles from './index.less'
 
-const RadioGroup = Radio.Group
+const Option = Select.Option
+const children = [
+  <Option key="1">言论虚假</Option>,
+  <Option key="2">标题夸大</Option>,
+  <Option key="3">违法违规</Option>,
+  <Option key="4">内容低俗</Option>,
+]
 const Detail = ({ authenticateDetail }) => {
   const { data } = authenticateDetail
   const content = []
@@ -28,12 +34,16 @@ const Detail = ({ authenticateDetail }) => {
     <div className={styles.content}>
       {content}
     </div>
-    <RadioGroup name="radiogroup" defaultValue={1}>
-      <Radio value={1}>可信</Radio>
-      <Radio value={2}>标题党</Radio>
-      <Radio value={3}>谣言</Radio>
-    </RadioGroup>
-    <Link to="/authenticate"><Button type="primary" ghost>确认</Button></Link>
+    <div className={styles['radio-group']}>
+      <Select mode="multiple"
+        style={{ width: '70%' }}
+        placeholder="Please select"
+        defaultValue={[]}
+      >
+        {children}
+      </Select>
+      <Link to="/authenticate"><Button type="primary" ghost className={styles['confirm-button']}>确认</Button></Link>
+    </div>
   </div>)
 }
 
