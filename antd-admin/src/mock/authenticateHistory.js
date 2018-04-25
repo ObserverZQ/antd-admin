@@ -39,6 +39,7 @@ let authenticateHistoryList1 = [
     categories: '首页',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:20',
+    result: '内容低俗',
   },
   {
     id: 10177,
@@ -48,6 +49,7 @@ let authenticateHistoryList1 = [
     categories: '首页',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:19',
+    result: '内容低俗',
   }, {
     id: 10178,
     status: 1,
@@ -56,22 +58,16 @@ let authenticateHistoryList1 = [
     categories: '首页',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:19',
-  }, {
-    id: 10179,
-    status: 1,
-    title: '2018 春夏 优衣库 x 暴雪娱乐合作款 UT 首次上市',
-    author: 'NGA玩家社区',
-    categories: '首页',
-    date: '2018-4-25 14:12',
-    authenticateDate: '2018-4-25 14:19',
+    result: '合格',
   }, {
     id: 10180,
     status: 1,
-    title: '《堡垒之夜》入美大学课堂，学费 19.5 万，奖金 2.5 万',
+    title: '课程惊人！学费 19.5 万，奖金 2.5 万',
     author: '17173游戏',
     categories: '首页',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:18',
+    result: '标题夸大',
   }, {
     id: 10181,
     status: 1,
@@ -80,22 +76,16 @@ let authenticateHistoryList1 = [
     categories: '首页',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:18',
+    result: '合格',
   }, {
     id: 10182,
     status: 1,
-    title: '[ 版本环境 ] 奇迹贼 TWW 研讨',
+    title: '奇迹贼 TWW ',
     author: '178游戏网',
     categories: '首页',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:16',
-  }, {
-    id: 10183,
-    status: 1,
-    title: '优衣库联名暴雪合作款 UT 即将上线',
-    author: '超好玩',
-    categories: '首页',
-    date: '2018-4-25 14:12',
-    authenticateDate: '2018-4-25 14:16',
+    result: '内容低俗',
   }, {
     id: 10184,
     status: 1,
@@ -104,6 +94,7 @@ let authenticateHistoryList1 = [
     categories: '首页',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:16',
+    result: '合格',
   }, {
     id: 10185,
     status: 1,
@@ -112,6 +103,7 @@ let authenticateHistoryList1 = [
     categories: '首页',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:16',
+    result: '合格',
   }, {
     id: 10186,
     status: 1,
@@ -120,6 +112,7 @@ let authenticateHistoryList1 = [
     categories: '首页',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:16',
+    result: '内容低俗，标题夸大',
   }, {
     id: 10187,
     status: 1,
@@ -128,6 +121,7 @@ let authenticateHistoryList1 = [
     categories: '健康',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:16',
+    result: '标题夸大',
   }, {
     id: 10188,
     status: 1,
@@ -136,6 +130,7 @@ let authenticateHistoryList1 = [
     categories: '健康',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:16',
+    result: '内容低俗',
   }, {
     id: 10189,
     status: 1,
@@ -144,6 +139,7 @@ let authenticateHistoryList1 = [
     categories: '健康',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:16',
+    result: '内容低俗，标题夸大',
   }, {
     id: 10190,
     status: 1,
@@ -152,6 +148,7 @@ let authenticateHistoryList1 = [
     categories: '健康',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:16',
+    result: '合格',
   }, {
     id: 10191,
     status: 1,
@@ -160,6 +157,7 @@ let authenticateHistoryList1 = [
     categories: '医院',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:15',
+    result: '标题夸大',
   }, {
     id: 10192,
     status: 1,
@@ -168,6 +166,7 @@ let authenticateHistoryList1 = [
     categories: '健康',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:15',
+    result: '虚假言论，标题夸大',
   }, {
     id: 10193,
     status: 1,
@@ -176,6 +175,7 @@ let authenticateHistoryList1 = [
     categories: '健康',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:15',
+    result: '标题夸大',
   }, {
     id: 10194,
     status: 1,
@@ -184,6 +184,17 @@ let authenticateHistoryList1 = [
     categories: '热点',
     date: '2018-4-25 14:12',
     authenticateDate: '2018-4-25 14:15',
+    result: '合格',
+  },
+  {
+    id: 10195,
+    status: 3,
+    title: '震惊！孕初期不注意这几点你可能会...',
+    author: '太平洋亲子网',
+    categories: '首页',
+    date: '2018-4-25 14:12',
+    authenticateDate: '2018-4-25 14:15',
+    result: '标题夸大',
   },
 ]
 module.exports = {

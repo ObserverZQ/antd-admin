@@ -12,6 +12,7 @@ const { TabPane } = Tabs
 const EnumAuthenticateHistoryStatus = {
   RIGHT: 1,
   WRONG: 2,
+  WAITING: 3,
 }
 
 const Index = ({
@@ -53,6 +54,9 @@ const Index = ({
         <List {...listProps} />
       </TabPane>
       <TabPane tab="错误" key={String(EnumAuthenticateHistoryStatus.WRONG)}>
+        <List {...listProps} />
+      </TabPane>
+      <TabPane tab="待定" key={String(EnumAuthenticateHistoryStatus.WAITING)}>
         <List {...listProps} />
       </TabPane>
     </Tabs>

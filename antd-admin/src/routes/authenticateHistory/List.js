@@ -17,6 +17,9 @@ const List = ({ ...tableProps }) => {
       title: '发布日期',
       dataIndex: 'date',
     }, {
+      title: '鉴定结果',
+      dataIndex: 'result',
+    }, {
       title: '鉴定日期',
       dataIndex: 'authenticateDate',
     },
