@@ -140,7 +140,8 @@ module.exports = {
 
   [`DELETE ${apiPrefix}/userBlack/:id`] (req, res) {
     const { id } = req.params
-    const data = queryArray(database1, id, 'id')
+    const idInt = parseInt(id, 0)
+    const data = queryArray(database1, idInt, 'id')
     if (data) {
       database1 = database1.filter(item => item.id !== id)
       res.status(204).end()
@@ -151,11 +152,12 @@ module.exports = {
 
   [`PATCH ${apiPrefix}/userBlack/:id`] (req, res) {
     const { id } = req.params
+    const idInt = parseInt(id, 0)
     const editItem = req.body
     let isExist = false
 
     database1 = database1.map((item) => {
-      if (item.id === id) {
+      if (item.id === idInt) {
         isExist = true
         return Object.assign({}, item, editItem)
       }

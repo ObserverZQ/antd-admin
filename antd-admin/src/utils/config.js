@@ -2,7 +2,7 @@ const APIV1 = '/api/v1'
 const APIV2 = '/api/v2'
 
 module.exports = {
-  name: 'AntD Admin',
+  name: '鉴闻',
   prefix: 'antdAdmin',
   footerText: 'Ant Design Admin  © 2018 Unintelligibility',
   logo: '/logo.svg',

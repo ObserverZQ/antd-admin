@@ -28,7 +28,7 @@ const { apiPrefix } = config
 let database = [
   {
     id: 201,
-    name: '人名日报',
+    name: '人民日报',
     link: 'http://www.people.com.cn/',
   },
   {
@@ -236,7 +236,8 @@ module.exports = {
 
   [`DELETE ${apiPrefix}/user/:id`] (req, res) {
     const { id } = req.params
-    const data = queryArray(database, id, 'id')
+    const idInt = parseInt(id, 0)
+    const data = queryArray(database, idInt, 'id')
     if (data) {
       database = database.filter(item => item.id !== id)
       res.status(204).end()
@@ -247,11 +248,12 @@ module.exports = {
 
   [`PATCH ${apiPrefix}/user/:id`] (req, res) {
     const { id } = req.params
+    const idInt = parseInt(id, 0)
     const editItem = req.body
     let isExist = false
 
     database = database.map((item) => {
-      if (item.id === id) {
+      if (item.id === idInt) {
         isExist = true
         return Object.assign({}, item, editItem)
       }
