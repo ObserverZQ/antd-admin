@@ -3,32 +3,25 @@ const { config } = require('./common')
 
 const { apiPrefix } = config
 
-let postId = 0
+
 const posts = Mock.mock({
-  'data|200': [
+  'data|6-9': [
     {
-      id () {
-        postId += 1
-        return postId + 10000
-      },
+      'id|+1': 601,
       'status|1-4': 1,
-      title: '@title',
-      author: '@last',
-      categories: '@word',
-      tags: '@word',
-      'views|10-200': 1,
-      'comments|10-200': 1,
-      name: '@word',
+      'name|+1': [
+        '龙腾网',
+        '联合早报',
+        'FT中文网',
+        '凤凰智库',
+        '大洋网',
+        '知乎推荐',
+        '观察者网',
+        '华尔街鉴闻',
+        'IT之家',
+      ],
       'times|100-500': 1,
-      visibility: () => {
-        return Mock.mock('@pick(["Public",'
-          + '"Password protected", '
-          + '"Private"])')
-      },
       date: '@dateTime',
-      image () {
-        return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.author.substr(0, 1))
-      },
     },
   ],
 }).data
